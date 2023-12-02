@@ -1,0 +1,37 @@
+<!-- edit.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    <h2>Edit User Details</h2>
+    <form action="{{ url_for('submit_edit', collection_name=collection_name) }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ data.name }}" required><br>
+
+        <label for="role">Role:</label>
+        <input type="text" name="role" value="{{ data.role }}" required><br>
+
+        <label for="bio">Bio:</label>
+        <textarea name="bio" required>{{ data.bio }}</textarea><br>
+
+        <label for="gender">Gender:</label>
+        <select name="gender" required>
+            <option value="male" {% if data.gender == 'male' %}selected{% endif %}>Male</option>
+            <option value="female" {% if data.gender == 'female' %}selected{% endif %}>Female</option>
+        </select><br>
+
+        <label for="department">Department:</label>
+        <input type="text" name="department" value="{{ data.department }}" required><br>
+
+        <label for="college">College:</label>
+        <input type="text" name="college" value="{{ data.college }}" required><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
